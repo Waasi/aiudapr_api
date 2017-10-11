@@ -19,8 +19,6 @@ defmodule AiudaprApiWeb.Endpoint do
     pass: ["*/*"],
     json_decoder: Poison
 
-  plug Absinthe.Plug, schema: AiudaprApiWeb.Schema
-
   plug Plug.MethodOverride
   plug Plug.Head
 

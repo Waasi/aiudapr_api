@@ -34,7 +34,6 @@ defmodule AiudaprApiWeb do
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
 
-      import AiudaprApiWeb.Router.Helpers
       import AiudaprApiWeb.ErrorHelpers
       import AiudaprApiWeb.Gettext
     end
