@@ -13,6 +13,7 @@ defmodule AiudaprApiWeb.Endpoint do
 
   plug Plug.RequestId
   plug Plug.Logger
+  plug CORSPlug
 
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
