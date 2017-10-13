@@ -18,6 +18,6 @@ defmodule AiudaprApi.Spot do
     spot
     |> cast(attrs, [:lat, :lon, :kind, :details])
     |> validate_required([:lat, :lon, :kind])
-    |> validate_inclusion(:kind, ["wifi", "oasis", "refugio", "electricidad", "comida"], message: "not a valid spot")
+    |> validate_inclusion(:kind, ["wifi", "oasis", "refugio", "electricidad", "gas", "atm"], message: "not a valid spot")
   end
 end
