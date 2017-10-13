@@ -14,6 +14,7 @@ defmodule AiudaprApiWeb.Schema.Types do
     field :kind, :kind
     field :lat, :float
     field :lon, :float
+    field :details, :string
   end
 
   enum :kind do
@@ -21,6 +22,7 @@ defmodule AiudaprApiWeb.Schema.Types do
     value :oasis, as: "oasis"
     value :electricidad, as: "electricidad"
     value :refugio, as: "refugio"
-    value :comida, as: "comida"
+    value :atm, as: "atm"
+    value :gas, as: "gas"
   end
 end
