@@ -8,6 +8,7 @@ defmodule AiudaprApi.Spot do
     field :kind, :string
     field :lat, :float
     field :lon, :float
+    field :details, :string
 
     timestamps()
   end
@@ -15,7 +16,7 @@ defmodule AiudaprApi.Spot do
   @doc false
   def changeset(%Spot{} = spot, attrs) do
     spot
-    |> cast(attrs, [:lat, :lon, :kind])
+    |> cast(attrs, [:lat, :lon, :kind, :details])
     |> validate_required([:lat, :lon, :kind])
     |> validate_inclusion(:kind, ["wifi", "oasis", "refugio", "electricidad", "comida"], message: "not a valid spot")
   end

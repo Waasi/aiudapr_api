@@ -23,6 +23,7 @@ defmodule AiudaprApiWeb.Schema do
       arg :kind, :kind
       arg :lat, non_null(:float)
       arg :lon, non_null(:float)
+      arg :details, :string
 
       resolve &AiudaprApiWeb.SpotResolver.create/2
     end
