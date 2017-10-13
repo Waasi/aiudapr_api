@@ -1,14 +1,13 @@
 defmodule AiudaprApi.User do
   use Ecto.Schema
   import Ecto.Changeset
-  alias AiudaprApi.User
+  alias AiudaprApi.{User, Location}
 
 
   schema "users" do
-    field :lat, :float
-    field :lon, :float
     field :name, :string
     field :phone, :string
+    has_many :locations, Location
 
     timestamps()
   end
@@ -16,7 +15,7 @@ defmodule AiudaprApi.User do
   @doc false
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:lat, :lon, :name, :phone])
-    |> validate_required([:lat, :lon, :phone])
+    |> cast(attrs, [:name, :phone])
+    |> validate_required([:phone])
   end
 end

@@ -14,9 +14,16 @@ setup-psql:
 	$(info Starting DB Setup)
 	psql -U postgres -c "CREATE USER postgres WITH SUPERUSER PASSWORD 'postgres';"
 
+prepare:
+	createuser -s postgres
+
 setup:
 	$(info Starting DB Setup)
 	mix ecto.setup
+
+reset:
+	$(info Starting DB Reset)
+	mix ecto.reset
 
 migrate:
 	$(info Starting DB Migration)
@@ -38,3 +45,5 @@ deps:
 	$(info Starting Dependencies Fetch)
 	mix deps.get
 
+console:
+	iex -S mix phx.server

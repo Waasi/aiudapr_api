@@ -10,13 +10,11 @@ defmodule AiudaprApiWeb.Schema do
   end
 
   mutation do
-    field :user, type: :user do
-      arg :name, :string
-      arg :phone, non_null(:string)
-      arg :lat, non_null(:float)
-      arg :lon, non_null(:float)
+    field :registration, type: :location do
+      arg :user, non_null(:user_args)
+      arg :location, non_null(:location_args)
 
-      resolve &AiudaprApiWeb.UserResolver.create/2
+      resolve &AiudaprApiWeb.RegistrationResolver.create/2
     end
 
     field :spot, type: :spot do

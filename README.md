@@ -5,11 +5,17 @@ AiudaPR is a web application for the
 notification of help and utility spots.
 Find more about AiudaPR [here](https://github.com/makobi/aiudapr)
 
+# Before Setup
+
+- Install Elixir with: `brew install elixir`
+- Install PGSQL with: `brew install postgresql`
+
 # Setup
 
 - `mix deps.get`
 - `make init-psql`
 - `make start-psql`
+- `make prepare # if this fails continue to the next step`
 - `make setup-psql`
 - `make migrate`
 - `make server`
@@ -50,14 +56,12 @@ mutation DeleteSpot {
 }
 ```
 
-### Create User
+### RegisterLocation
 
 ```graphql
-mutation CreateUser {
-  user(name: <string>, phone: <string>, lat: <float>, lon: <float>) {
-    id
-    name
-    phone
+mutation CreateRegistration {
+  registration(user: {name: <string>, phone: <string>}, location: {tag: <string>, lat: <float>, lon: <float>}) {
+    tag
     lat
     lon
   }
