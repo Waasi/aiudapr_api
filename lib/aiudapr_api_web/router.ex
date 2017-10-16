@@ -1,13 +1,13 @@
 defmodule AiudaprApiWeb.Router do
   use AiudaprApiWeb, :router
 
-  forward "/api", Absinthe.Plug, schema: AiudaprApiWeb.Schema
+  forward "/", Absinthe.Plug, schema: AiudaprApiWeb.Schema
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/api", AiudaprApiWeb do
+  scope "/", AiudaprApiWeb do
     pipe_through :api
   end
 end
