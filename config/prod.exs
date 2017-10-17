@@ -11,5 +11,5 @@ config :logger, level: :info
 config :aiudapr_api, AiudaprApi.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
-  pool_size: 15,
+  pool_size: System.get_env("POOL_SIZE"),
   ssl: true
