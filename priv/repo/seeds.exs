@@ -32,7 +32,7 @@ defmodule AtmData do
       lat: Enum.at(spot["geometry"]["coordinates"], 1),
       lon: Enum.at(spot["geometry"]["coordinates"], 0),
       kind: "atm",
-      details: spot["properties"]["bank"]
+      details: spot["properties"]["Bank"]
     }
   end
 end
