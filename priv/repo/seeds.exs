@@ -13,28 +13,29 @@
 alias AiudaprApi.Repo
 alias AiudaprApi.Spot
 
-defmodule AtmData do
-  def import do
-    Path.expand("../data/atm_data.json", __DIR__)
+defmodule SpotDataImporter do
+  def import(file_name, kind, details_key) do
+    Path.expand("../data/#{file_name}", __DIR__)
     |> File.read!
     |> Poison.decode!
-    |> do_create_spots
+    |> do_import_spots(kind, details_key)
   end
 
-  defp do_create_spots(data) do
-    Enum.each data["features"], fn(spot) ->
-      do_create_spot(spot)
+  defp do_import_spots(aiuda_data, kind, details_key) do
+    Enum.each aiuda_data["features"], fn(spot) ->
+      do_import_spot(spot, kind, details_key)
     end
   end
 
-  defp do_create_spot(spot) do
+  defp do_import_spot(spot, kind, details_key) do
     Repo.insert! %Spot{
       lat: Enum.at(spot["geometry"]["coordinates"], 1),
       lon: Enum.at(spot["geometry"]["coordinates"], 0),
-      kind: "atm",
-      details: spot["properties"]["Bank"]
+      kind: kind,
+      details: spot["properties"][details_key]
     }
   end
 end
 
-AtmData.import
+SpotDataImporter.import("atm_data.json", "atm", "Bank")
+SpotDataImporter.import("wifi_data.json", "wifi", "Name")
