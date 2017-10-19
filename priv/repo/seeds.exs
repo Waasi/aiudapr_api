@@ -39,3 +39,4 @@ end
 
 SpotDataImporter.import("atm_data.json", "atm", "Bank")
 SpotDataImporter.import("wifi_data.json", "wifi", "Name")
+SpotDataImporter.import("oasis_data.json", "oasis", "Name")
