@@ -17,6 +17,12 @@ defmodule AiudaprApiWeb.Schema do
       resolve &AiudaprApiWeb.RegistrationResolver.create/2
     end
 
+    field :authentication_code, type: :string do
+      arg :phone, non_null(:string)
+
+      resolve &AiudaprApiWeb.AuthenticationResolver.create/2
+    end
+
     field :spot, type: :spot do
       arg :kind, :kind
       arg :lat, non_null(:float)

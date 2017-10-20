@@ -34,7 +34,9 @@ defmodule AiudaprApi.Mixfile do
       {:cowboy, "~> 1.0"},
       {:absinthe, "~> 1.3.1"},
       {:absinthe_plug, "~> 1.3.0"},
-      {:cors_plug, "~> 1.2"}
+      {:cors_plug, "~> 1.2"},
+      {:twilex, git: "https://github.com/Waasi/twilex"},
+      {:ttf_auth, git: "https://github.com/Waasi/ttf_auth"}
     ]
   end
 

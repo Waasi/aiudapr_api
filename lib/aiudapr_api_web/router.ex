@@ -1,13 +1,13 @@
 defmodule AiudaprApiWeb.Router do
   use AiudaprApiWeb, :router
 
-  forward "/", Absinthe.Plug, schema: AiudaprApiWeb.Schema
-
   pipeline :api do
     plug :accepts, ["json"]
+    plug TTFAuth.Plugs.GQLSheriff
   end
 
-  scope "/", AiudaprApiWeb do
+  scope "/" do
     pipe_through :api
+    forward "/", Absinthe.Plug, schema: AiudaprApiWeb.Schema
   end
 end
