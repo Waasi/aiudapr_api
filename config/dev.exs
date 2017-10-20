@@ -17,3 +17,7 @@ config :aiudapr_api, AiudaprApi.Repo,
   database: "aiudapr_api_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :twilex,
+  sid: System.get_env("TWILIO_SID"),
+  token: System.get_env("TWILIO_TOKEN")

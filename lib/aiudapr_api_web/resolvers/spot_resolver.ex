@@ -5,7 +5,7 @@ defmodule AiudaprApiWeb.SpotResolver do
     {:ok, Repo.all(Spot)}
   end
 
-  def create(args, _info) do
+  def create(args, %{context: %{entity: _entity}}) do
     response =
       %Spot{}
       |> Spot.changeset(args)
@@ -19,7 +19,9 @@ defmodule AiudaprApiWeb.SpotResolver do
     end
   end
 
-  def delete(%{id: id}, _info) do
+  def create(_, _), do: {:error, "invalid authentication code"}
+
+  def delete(%{id: id}, %{context: %{entity: _entity}}) do
     spot = Repo.get(Spot, id)
     response = Repo.delete(spot)
 
@@ -30,4 +32,6 @@ defmodule AiudaprApiWeb.SpotResolver do
         {:error, ErrorHandler.format(errors)}
     end
   end
+
+  def delete(_, _), do: {:error, "invalid authentication code"}
 end

@@ -13,3 +13,7 @@ config :aiudapr_api, AiudaprApi.Repo,
   url: System.get_env("DATABASE_URL"),
   pool_size: System.get_env("POOL_SIZE"),
   ssl: true
+
+config :twilex,
+  sid: System.get_env("TWILIO_SID"),
+  token: System.get_env("TWILIO_TOKEN")
