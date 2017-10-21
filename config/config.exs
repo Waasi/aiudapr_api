@@ -23,7 +23,7 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :ttf_auth,
-  expiration_time: 600000,
+  expiration_time: 1200000,
   sender: AiudaprApi.Messenger
 
 # Import environment specific config. This must remain at the bottom
